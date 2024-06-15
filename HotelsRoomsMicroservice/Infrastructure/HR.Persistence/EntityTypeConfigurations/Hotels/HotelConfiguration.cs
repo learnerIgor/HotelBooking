@@ -1,0 +1,27 @@
+﻿using HR.Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace HR.Persistence.EntityTypeConfigurations.Hotels
+{
+    public class HotelConfiguration : IEntityTypeConfiguration<Hotel>
+    {
+        public void Configure(EntityTypeBuilder<Hotel> builder)
+        {
+            builder.HasKey(e => e.HotelId);
+            builder.Property(e => e.HotelId).HasDefaultValueSql("NEWID()");
+
+            builder.Property(e => e.Name).HasMaxLength(50).IsRequired();
+            builder.Property(e => e.Description).HasMaxLength(200).IsRequired();
+            builder.Property(e => e.IBAN).HasMaxLength(34).IsRequired();
+
+            builder
+                .HasMany(e => e.Rooms)
+                .WithOne(e => e.Hotel)
+                .HasForeignKey(e => e.HotelId);
+
+            builder.Navigation(r => r.Rooms).AutoInclude();
+            builder.Navigation(r => r.Address).AutoInclude();
+        }
+    }
+}

@@ -1,0 +1,64 @@
+﻿syntax = "proto3";
+option csharp_namespace = "GrpcGreeter";
+package greet;
+
+// RoomService
+service RoomService {
+  // GetRoom
+  rpc GetRoom (GetRoomRequest) returns (RoomReply);
+}
+
+message GetRoomRequest{
+  string roomId = 1;
+}
+
+message RoomReply {
+  string roomId = 1;
+  int32 floor = 2;
+  int32 number = 3;
+  bool isActive = 4;
+  string image = 5;
+  RoomType roomType = 6;
+  Hotel hotel = 7;
+}
+
+message RoomType {
+  string roomTypeId = 1;
+  string name = 2;
+  double baseCost = 3;
+  bool isActive = 4;
+}
+
+message Hotel {
+  string hotelId = 1;
+  string name = 2;
+  string description = 3;
+  int32 rating = 4;
+  bool isActive = 5;
+  string iban = 6;
+  string image = 7;
+  Address address = 8;
+}
+
+message Address {
+  string addressId = 1;
+  string street = 2;
+  string houseNumber = 3;
+  double latitude = 4;
+  double longitude = 5;
+  bool isActive = 6;
+  City city = 7;
+}
+
+message City {
+  string cityId = 1;
+  string name = 2;
+  bool isActive = 3;
+  Country country = 4;
+}
+
+message Country {
+  string countryId = 1;
+  string name = 2;
+  bool isActive = 3;
+}

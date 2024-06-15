@@ -1,0 +1,75 @@
+using System.Net;
+using FluentValidation;
+using Auth.Application.Exceptions;
+using Auth.ExternalProviders.Exceptions;
+
+namespace Auth.Api.Middlewares
+{
+    internal class ExceptionsHandlerMiddleware(RequestDelegate next)
+    {
+        public async Task Invoke(HttpContext context, ILogger<ExceptionsHandlerMiddleware> logger)
+        {
+            try
+            {
+                await next(context);
+            }
+            catch (Exception exception)
+            {
+                await HandleExceptionAsync(context, exception, logger);
+            }
+        }
+
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception, ILogger<ExceptionsHandlerMiddleware> logger)
+        {
+            var code = HttpStatusCode.InternalServerError;
+            var result = string.Empty;
+            switch (exception)
+            {
+                case ValidationException validationException:
+                    code = HttpStatusCode.BadRequest;
+                    result = System.Text.Json.JsonSerializer.Serialize(validationException.Errors);
+                    break;
+                case BadOperationException badOperationException:
+                    code = HttpStatusCode.BadRequest;
+                    result = System.Text.Json.JsonSerializer.Serialize(badOperationException.Message);
+                    break;
+                case NotFoundException notFound:
+                    code = HttpStatusCode.NotFound;
+                    result = System.Text.Json.JsonSerializer.Serialize(notFound.Message);
+                    break;
+                case ExternalServiceBadResult externalServiceBadResult:
+                    code = HttpStatusCode.BadRequest;
+                    result = System.Text.Json.JsonSerializer.Serialize(externalServiceBadResult.Message);
+                    break;
+                case ExternalServiceNotAvailable externalServiceNotAvailable:
+                    code = HttpStatusCode.BadRequest;
+                    result = System.Text.Json.JsonSerializer.Serialize(externalServiceNotAvailable.Message);
+                    break;
+            }
+
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)code;
+
+            if (result == string.Empty)
+                result = System.Text.Json.JsonSerializer.Serialize(new { error = exception.Message, innerMessage = exception.InnerException?.Message, exception.StackTrace });
+
+            logger.Log(code == HttpStatusCode.InternalServerError ? LogLevel.Error : LogLevel.Warning, exception, $"Response error {code}: {exception.Message}");
+
+            return context.Response.WriteAsync(result);
+        }
+    }
+
+    /// <summary>
+    /// Class for the error extension method
+    /// </summary>
+    public static class ExceptionsHandlerMiddlewareExtensions
+    {
+        /// <summary>
+        /// Error extension method
+        /// </summary>
+        public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ExceptionsHandlerMiddleware>();
+        }
+    }
+}

@@ -1,0 +1,51 @@
+﻿namespace Booking.Domain
+{
+    public class RoomType
+    {
+        public Guid RoomTypeId { get; private set; }
+        public string Name { get; private set; }
+        public decimal BaseCost { get; private set; }
+        public bool IsActive { get; private set; }
+
+        public IEnumerable<Room> Rooms { get; private set; } = new List<Room>();
+
+        public RoomType(Guid roomTypeId, string name, decimal baseCost, bool isActive)
+        {
+            if(roomTypeId == Guid.Empty)
+            {
+                throw new ArgumentException("RoomTypeId is null", nameof(roomTypeId));
+            }
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Name is empty", nameof(name));
+            }
+
+            if (name.Length > 50)
+            {
+                throw new ArgumentException("Name length more than 50", nameof(name));
+            }
+
+            if (name.Length < 3)
+            {
+                throw new ArgumentException("Name length less than 3", nameof(name));
+            }
+
+            if (baseCost == 0)
+            {
+                throw new ArgumentException("BaseCost must be more than 0", nameof(baseCost));
+            }
+
+            if (baseCost < 0)
+            {
+                throw new ArgumentException("BaseCost must be more than 0", nameof(baseCost));
+            }
+
+            RoomTypeId = roomTypeId;
+            Name = name;
+            BaseCost = baseCost;
+            IsActive = isActive;
+        }
+
+        private RoomType() { }
+    }
+}
