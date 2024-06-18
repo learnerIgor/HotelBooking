@@ -90,14 +90,14 @@ namespace Booking.ExternalProviders
                 var hotel = await _hotel.AsAsyncRead().SingleOrDefaultAsync(t => t.HotelId == idHotel, cancellationToken);
                 if (hotel == null)
                 {
-                    var newHotel = new Domain.Hotel(idHotel, resultRoom.Hotel.Name, idAddress, resultRoom.Hotel.Description, resultRoom.Hotel.Rating, resultRoom.Hotel.IsActive, resultRoom.Hotel.Image);
+                    var newHotel = new Domain.Hotel(idHotel, resultRoom.Hotel.Name, idAddress, resultRoom.Hotel.Description, resultRoom.Hotel.Rating, resultRoom.Hotel.IsActive, resultRoom.Hotel.Image, "IT60X0542811101000000123456");
                     await _hotel.AddAsync(newHotel, cancellationToken);
                 }
 
                 var newRoom = new Domain.Room(Guid.Parse(roomId), resultRoom.Floor, resultRoom.Number, idRoomType, resultRoom.IsActive, idHotel, resultRoom.Image);
                 return await _rooms.AddAsync(newRoom, cancellationToken);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 var serviceName = "UserService";
                 throw new ExternalServiceNotAvailable(serviceName, requestUrl!);

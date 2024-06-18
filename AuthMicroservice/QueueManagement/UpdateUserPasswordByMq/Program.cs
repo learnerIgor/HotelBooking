@@ -12,10 +12,11 @@ var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
 
 var factory = new ConnectionFactory
 {
-    HostName = "localhost",
+    HostName = "rabbit",
     UserName = "guest",
     Password = "guest",
 };
+Thread.Sleep(10000);
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
 

@@ -1,4 +1,3 @@
-
 services:
 
   redis:
@@ -8,7 +7,116 @@ services:
       
   rabbitmq:
     image: rabbitmq:3.12.2-management
+    logging:
+      driver: none
+    hostname: rabbit
     ports:
       - "15672:15672"
-      - "5671:5671"
-      - "5672:5672" 
+
+  mssql:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "0bd7903b-f568-4894-8d72-3c1b507e5644"
+    ports:
+      - "1433:1433"
+
+  proxy:
+    container_name: proxy_container
+    image: nginx:mainline
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+    ports:
+      - "80:80"
+
+  users.api:
+    image: ${DOCKER_REGISTRY-}usersapi
+    build:
+      context: ..
+      dockerfile: UsersMicroservice/Users.Api/Dockerfile
+    ports:
+      - "8081:8080"
+
+
+  auth.api:
+    image: ${DOCKER_REGISTRY-}authapi
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/Auth.Api/Dockerfile
+    ports:
+      - "8082:8080"
+
+
+  deleteuserbymq:
+    image: ${DOCKER_REGISTRY-}deleteuserbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/DeleteUserByMq/Dockerfile
+
+
+  updateuserbymq:
+    image: ${DOCKER_REGISTRY-}updateuserbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/UpdateUserByMq/Dockerfile
+
+
+  updateuserpasswordbymq:
+    image: ${DOCKER_REGISTRY-}updateuserpasswordbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/UpdateUserPasswordByMq/Dockerfile
+
+
+  accommo.api:
+    image: ${DOCKER_REGISTRY-}accommoapi
+    build:
+      context: ..
+      dockerfile: AccommoSearchMicroservice/Accommo.Api/Dockerfile
+    ports:
+      - "8083:8080"
+
+
+  booking.api:
+    image: ${DOCKER_REGISTRY-}bookingapi
+    build:
+      context: ..
+      dockerfile: BookingMicroservice/Booking.Api/Dockerfile
+    ports:
+      - "8084:8080"
+
+
+  adduserbymq:
+    image: ${DOCKER_REGISTRY-}adduserbymq
+    build:
+      context: ..
+      dockerfile: BookingMicroservice/QueueManagement/AddUserByMq/Dockerfile
+
+
+  hr.api:
+    image: ${DOCKER_REGISTRY-}hrapi
+    build:
+      context: ..
+      dockerfile: HotelsRoomsMicroservice/HR.Api/Dockerfile
+    ports:
+      - "8085:8080"
+
+
+  mail.api:
+    image: ${DOCKER_REGISTRY-}mailapi
+    build:
+      context: ..
+      dockerfile: MailMicroservice/Mail.Api/Dockerfile
+    ports:
+      - "8086:8080"
+
+
+  sendemailbymq:
+    image: ${DOCKER_REGISTRY-}sendemailbymq
+    build:
+      context: ..
+      dockerfile: MailMicroservice/QueueManagement/SendEmailByMq/Dockerfile
+

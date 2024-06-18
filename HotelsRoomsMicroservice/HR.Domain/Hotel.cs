@@ -187,5 +187,10 @@
             return Uri.TryCreate(url, UriKind.Absolute, out var uriResult)
                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
+
+        public void UpdateHotelId(Guid hotelId)
+        {
+            HotelId = hotelId;
+        }
     }
 }

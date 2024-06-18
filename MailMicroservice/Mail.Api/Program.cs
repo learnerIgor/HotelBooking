@@ -4,9 +4,14 @@ using Serilog;
 using Serilog.Events;
 using Mail.Api.Middlewares;
 using Mail.Api;
+using Microsoft.OpenApi.Models;
 
 try
 {
+    const string appPrefix = "Mail";
+    const string version = "v1";
+    const string appName = "Mail service API v1";
+
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Host.UseSerilog((ctx, lc) => lc
@@ -22,7 +27,12 @@ try
 
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSwaggerGen(options => options.SwaggerDoc(version, new OpenApiInfo
+    {
+        Version = version,
+        Title = appName,
+        Description = appName
+    }));
 
     builder.Services
         .AddPersistenceServices(builder.Configuration)
@@ -32,10 +42,13 @@ try
     
     app.RunDbMigrations();
 
-    app.UseExceptionHandlerMiddleware();
-
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseExceptionHandlerMiddleware()
+        .UseSwagger(c => { c.RouteTemplate = appPrefix + "/swagger/{documentname}/swagger.json"; })
+        .UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/" + appPrefix + $"/swagger/{version}/swagger.json", version);
+            options.RoutePrefix = appPrefix + "/swagger";
+        });
 
     app.MapControllers();
 

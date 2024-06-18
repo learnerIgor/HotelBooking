@@ -27,10 +27,12 @@ namespace Accommo.Application.Handlers.External.Rooms
                         {
                             CityId = dest.Address.City.CityId,
                             Name = dest.Address.City.Name,
+                            IsActive = dest.Address.City.IsActive,
                             Country = new CountryBookDto
                             {
                                 CountryId = dest.Address.City.Country.CountryId,
-                                Name = dest.Address.City.Country.Name
+                                Name = dest.Address.City.Country.Name,
+                                IsActive = dest.Address.City.Country.IsActive
                             }
                         };
                     }

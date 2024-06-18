@@ -15,7 +15,7 @@ namespace SendEmailByMq
 
         public async Task SendMessage()
         {
-            var postEmailApiMethodUrl = $"http://localhost:5096/Email";
+            var postEmailApiMethodUrl = $"http://mail.api:8080/Email";
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postEmailApiMethodUrl);
             httpRequest.Content = new StringContent(json, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.SendAsync(httpRequest);

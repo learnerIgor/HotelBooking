@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DeleteUserByMq": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

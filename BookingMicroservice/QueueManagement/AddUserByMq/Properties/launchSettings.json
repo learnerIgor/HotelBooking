@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AddUserByMq": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

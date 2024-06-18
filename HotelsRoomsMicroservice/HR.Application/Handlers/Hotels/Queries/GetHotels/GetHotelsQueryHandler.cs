@@ -2,7 +2,6 @@
 using HR.Application.Abstractions.Caches.Hotels;
 using HR.Application.Abstractions.Persistence.Repositories.Read;
 using HR.Application.BaseRealizations;
-using HR.Application.Caches;
 using HR.Application.Dtos;
 using HR.Domain;
 

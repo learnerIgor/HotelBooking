@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SendEmailByMq": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

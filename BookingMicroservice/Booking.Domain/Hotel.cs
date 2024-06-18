@@ -14,7 +14,7 @@
         public Address Address { get; private set; }
         public IEnumerable<Room> Rooms { get; private set; } = new List<Room>();
 
-        public Hotel(Guid hotelId, string name, Guid addressId, string description, int rating, bool isActive, string image)
+        public Hotel(Guid hotelId, string name, Guid addressId, string description, int rating, bool isActive, string image, string iban)
         {
             if(hotelId == Guid.Empty)
             {
@@ -50,7 +50,6 @@
                 throw new ArgumentException("Description length less than 10", nameof(description));
             }
 
-
             if (rating > 5)
             {
                 throw new ArgumentException("Rating length more than 5", nameof(rating));
@@ -73,6 +72,7 @@
             Rating = rating;
             IsActive = isActive;
             Image = image;
+            IBAN = iban;
         }
 
         private bool IsUrlTrue(string url)

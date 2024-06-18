@@ -15,7 +15,7 @@ namespace AddUserByMq
 
         public async Task SendMessage()
         {
-            var postUserApiMethodUrl = $"http://localhost:5190/User";
+            var postUserApiMethodUrl = $"http://booking.api:8080/User";
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postUserApiMethodUrl);
             httpRequest.Content = new StringContent(json, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.SendAsync(httpRequest);

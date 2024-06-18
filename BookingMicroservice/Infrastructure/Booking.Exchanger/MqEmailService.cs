@@ -2,7 +2,6 @@
 using RabbitMQ.Client;
 using System.Text;
 using Booking.Application.Abstractions;
-using MediatR;
 
 namespace Booking.Exchanger
 {
@@ -18,7 +17,7 @@ namespace Booking.Exchanger
         {
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
+                HostName = "rabbit",
                 UserName = "guest",
                 Password = "guest",
             };

@@ -36,9 +36,9 @@
             {
                 throw new ArgumentException("Login length more than 50", nameof(login));
             }
-            if (login.Length < 3)
+            if (login.Length < 5)
             {
-                throw new ArgumentException("Login length less than 3", nameof(login));
+                throw new ArgumentException("Login length less than 5", nameof(login));
             }
 
             Login = login;

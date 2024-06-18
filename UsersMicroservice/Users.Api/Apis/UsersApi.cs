@@ -10,7 +10,6 @@ using Users.Application.Handlers.Queries.GetUser;
 using Users.Application.Handlers.Queries.GetUserByLogin;
 using Users.Application.Handlers.Queries.GetUsers;
 using Users.Application.Handlers.Queries.GetUsersCount;
-using Users.Domain;
 
 namespace Users.Api.Apis;
 

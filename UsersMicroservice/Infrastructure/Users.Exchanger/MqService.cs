@@ -20,7 +20,7 @@ namespace Users.Exchanger
         {
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
+                HostName = "rabbit",
                 UserName = "guest",
                 Password = "guest",
             };
@@ -46,7 +46,7 @@ namespace Users.Exchanger
         {
             var factory = new ConnectionFactory
             {
-                HostName = "localhost",
+                HostName = "rabbit",
                 UserName = "guest",
                 Password = "guest",
             };
