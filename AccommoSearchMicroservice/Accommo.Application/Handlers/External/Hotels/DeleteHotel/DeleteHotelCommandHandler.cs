@@ -35,6 +35,11 @@ namespace Accommo.Application.Handlers.External.Hotels.DeleteHotel
             }
             hotel.UpdateIsActive(false);
 
+            foreach (var room in hotel.Rooms)
+            {
+                room.UpdateIsActive(false);
+            }
+
             var address = await _address.AsAsyncRead().SingleOrDefaultAsync(a => a.AddressId == hotel.AddressId, cancellationToken);
             address!.SetIsActive(false);
 

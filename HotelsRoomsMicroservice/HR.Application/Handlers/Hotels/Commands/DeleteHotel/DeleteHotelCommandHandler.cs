@@ -47,6 +47,11 @@ namespace HR.Application.Handlers.Hotels.Commands.DeleteHotel
             var address = await _address.AsAsyncRead().SingleOrDefaultAsync(a => a.AddressId == hotel.AddressId, cancellationToken);
             address!.SetIsActive(false);
 
+            foreach (var room in hotel.Rooms)
+            {
+                room.UpdateIsActive(false);
+            }
+
             await _hotel.UpdateAsync(hotel, cancellationToken);
             await _hotelProvider.DeleteHotelAsync(_currentUserService.Token, hotelId, cancellationToken);
             _logger.LogWarning($"Hotel {hotel.HotelId} deleted");

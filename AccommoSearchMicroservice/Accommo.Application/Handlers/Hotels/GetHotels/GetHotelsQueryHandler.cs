@@ -36,7 +36,7 @@ namespace Accommo.Application.Handlers.Hotels.GetHotels
             }
 
             var hotelIds = _rooms.AsQueryable()
-                .Where(room => room.Reservations.All(r => (r.CheckInDate > startDate && r.CheckInDate > endDate) 
+                .Where(room => room.Reservations.Where(r => r.IsActive).All(r => (r.CheckInDate > startDate && r.CheckInDate > endDate) 
                     || (r.CheckOutDate < startDate && r.CheckOutDate < endDate)))
                 .Select(room => room.HotelId)
                 .Distinct();

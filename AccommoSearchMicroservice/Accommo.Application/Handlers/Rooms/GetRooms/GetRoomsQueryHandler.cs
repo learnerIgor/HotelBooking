@@ -30,7 +30,7 @@ namespace Accommo.Application.Handlers.Rooms.GetRooms
             }
 
             var idGuid = Guid.Parse(request.HotelId);
-            var query = _rooms.AsQueryable().Where(room => room.Reservations.All(r => (r.CheckInDate > startDate && r.CheckInDate > endDate)
+            var query = _rooms.AsQueryable().Where(room => room.Reservations.Where(r => r.IsActive).All(r => (r.CheckInDate > startDate && r.CheckInDate > endDate)
                                                                                   || (r.CheckOutDate < startDate && r.CheckOutDate < endDate))
                                                         && room.HotelId == idGuid && room.IsActive);
 
