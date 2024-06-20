@@ -1,4 +1,4 @@
-using HR.Application.Exceptions;
+using Accommo.Application.Exceptions;
 using FluentAssertions;
 using FluentAssertions.Specialized;
 using MediatR;
@@ -52,15 +52,6 @@ namespace Core.Tests
             // assert
             await action.Should().ThrowAsync<NotFoundException>();
         }
-    
-        protected async Task AssertThrowForbiddenFound(TCommand command)
-        {
-            // act
-            var action = () => CommandHandler.Handle(command, default);
-
-            // assert
-            await action.Should().ThrowAsync<ForbiddenException>();
-        }
     }
     public abstract class RequestHandlerTestBase<TCommand, TResult> : TestBase
         where TCommand : IRequest<TResult>
@@ -108,15 +99,6 @@ namespace Core.Tests
 
             // assert
             await action.Should().ThrowAsync<NotFoundException>();
-        }
-    
-        protected async Task AssertThrowForbiddenFound(TCommand command)
-        {
-            // act
-            var action = () => CommandHandler.Handle(command, default);
-
-            // assert
-            await action.Should().ThrowAsync<ForbiddenException>();
         }
     }
 }

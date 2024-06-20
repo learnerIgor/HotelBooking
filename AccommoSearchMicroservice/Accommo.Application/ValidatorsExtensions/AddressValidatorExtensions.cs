@@ -4,7 +4,7 @@ using Accommo.Application.Handlers.External.Hotels;
 
 namespace Accommo.Application.ValidatorsExtensions
 {
-    internal sealed class BaseAddressValidator : AbstractValidator<AddressDto>
+    internal sealed class BaseAddressValidator : AbstractValidator<GetAddressExternalDto>
     {
         public BaseAddressValidator()
         {
@@ -19,7 +19,7 @@ namespace Accommo.Application.ValidatorsExtensions
 
     public static class AddressValidatorExtensions
     {
-        public static void IsValidAddress<T>(this IRuleBuilder<T, AddressDto> ruleBuilder)
+        public static void IsValidAddress<T>(this IRuleBuilder<T, GetAddressExternalDto> ruleBuilder)
         {
             ruleBuilder
                 .SetValidator(new BaseAddressValidator());

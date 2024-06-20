@@ -1,17 +1,17 @@
 using AutoMapper;
-using HR.Application.Abstractions.Persistence.Repositories.Read;
-using HR.Application.Handlers.Hotels;
+using Accommo.Application.Abstractions.Persistence.Repositories.Read;
 using Moq;
-using HR.Domain;
-using HR.Application.Abstractions.Caches.Hotels;
-using HR.Application.Handlers.Hotels.Queries.GetHotel;
+using Accommo.Domain;
+using Accommo.Application.Abstractions.Caches.Hotels;
 using Core.Tests;
 using Xunit.Abstractions;
 using Core.Tests.Fixtures;
 using MediatR;
 using System.Linq.Expressions;
+using Accommo.Application.Handlers.Hotels.GetHotel;
+using Accommo.Application.Dtos.Hotels;
 
-namespace HR.UnitTests.Tests.Hotels.Queries.GetHotel
+namespace Accommo.UnitTests.Tests.Hotels.Queries.GetHotel
 {
     public class GetHotelQueryHandlerTest : RequestHandlerTestBase<GetHotelQuery, GetHotelDto>
     {
@@ -37,8 +37,7 @@ namespace HR.UnitTests.Tests.Hotels.Queries.GetHotel
                 Id = hotelId.ToString()
             };
 
-            var hotel = new Hotel("Hotel", Guid.NewGuid(), "description", "fsddfsdg", 4, true, "https://dfsdfsdfg");
-            hotel.UpdateHotelId(hotelId);
+            var hotel = new Hotel(Guid.NewGuid(), "Hotel", Guid.NewGuid(), "description", 4, true, "https://dfsdfsdfg");
 
             _hotelsMock
                 .Setup(p => p.AsAsyncRead().SingleOrDefaultAsync(It.IsAny<Expression<Func<Hotel, bool>>>(), default))

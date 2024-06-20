@@ -9,7 +9,7 @@ using Accommo.Application.Abstractions.Caches.Hotels;
 
 namespace Accommo.Application.Handlers.Hotels.GetHotels
 {
-    internal class GetHotelsQueryHandler : BaseCashedQuery<GetHotelsQuery, BaseListDto<GetHotelDto>>
+    public class GetHotelsQueryHandler : BaseCashedQuery<GetHotelsQuery, BaseListDto<GetHotelDto>>
     {
         private readonly IBaseReadRepository<Hotel> _hotels;
         private readonly IBaseReadRepository<Room> _rooms;

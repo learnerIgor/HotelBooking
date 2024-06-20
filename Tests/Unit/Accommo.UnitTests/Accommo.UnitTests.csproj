@@ -17,17 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HotelsRoomsMicroservice\HR.Application\HR.Application.csproj" />
-    <ProjectReference Include="..\..\..\HotelsRoomsMicroservice\HR.Domain\HR.Domain.csproj" />
+    <ProjectReference Include="..\..\..\AccommoSearchMicroservice\Accommo.Application\Accommo.Application.csproj" />
+    <ProjectReference Include="..\..\..\AccommoSearchMicroservice\Accommo.Domain\Accommo.Domain.csproj" />
     <ProjectReference Include="..\..\Core.Tests\Core.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Tests\Hotels\Commands\" />
   </ItemGroup>
 
 </Project>

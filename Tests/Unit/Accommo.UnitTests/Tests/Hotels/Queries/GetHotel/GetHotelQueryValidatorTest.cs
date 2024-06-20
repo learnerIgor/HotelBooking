@@ -1,11 +1,11 @@
-﻿using AutoFixture;
+﻿using Accommo.Application.Handlers.Hotels.GetHotel;
+using AutoFixture;
 using Core.Tests;
 using Core.Tests.Attributes;
 using FluentValidation;
-using HR.Application.Handlers.Hotels.Queries.GetHotel;
 using Xunit.Abstractions;
 
-namespace HR.UnitTests.Tests.Hotels.Queries.GetHotel
+namespace Accommo.UnitTests.Tests.Hotels.Queries.GetHotel
 {
     public class GetHotelQueryValidatorTest : ValidatorTestBase<GetHotelQuery>
     {
