@@ -21,7 +21,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Get country by name
         /// </summary>
-        [HttpGet("/Country/{id}")]
+        [HttpGet("/Countries/{id}")]
         public async Task<GetCountryDto> GetCountry([FromRoute] string id, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetCountryQuery { Id = id }, cancellationToken);
@@ -41,7 +41,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Create country
         /// </summary>
-        [HttpPost("/Country")]
+        [HttpPost("/Countries")]
         public async Task<GetCountryDto> CreateCountry([FromBody] CreateCountryCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -51,7 +51,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update country by id
         /// </summary>
-        [HttpPatch("/Country/{id}")]
+        [HttpPatch("/Countries/{id}")]
         public async Task<GetCountryDto> UpdateCountry([FromRoute] string id, [FromBody] UpdateCountryCommandPayLoad payLoad, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             var comm = new UpdateCountryCommand { Id = id, Name = payLoad.Name };
@@ -61,7 +61,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Delete country by id
         /// </summary>
-        [HttpDelete("/Country/{id}")]
+        [HttpDelete("/Countries/{id}")]
         public Task DeleteCountry([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteCountryCommand { Id = id }, cancellationToken);

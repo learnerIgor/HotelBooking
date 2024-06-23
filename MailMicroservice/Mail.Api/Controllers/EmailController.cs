@@ -16,7 +16,7 @@ namespace Mail.Api.Controllers
         /// <summary>
         /// Send email
         /// </summary>
-        [HttpPost("/Email")]
+        [HttpPost("/Emails")]
         public async Task<bool> SendEmail([FromBody] SendEmailCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command , cancellationToken);

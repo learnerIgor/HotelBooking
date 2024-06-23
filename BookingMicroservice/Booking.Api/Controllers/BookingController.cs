@@ -20,9 +20,9 @@ namespace Booking.Api.Controllers
     public class BookingController : ControllerBase
     {
         /// <summary>
-        /// Get bookigs by id user 
+        /// Get bookig by id user 
         /// </summary>
-        [HttpGet("/Bookigs/User/{id}")]
+        [HttpGet("/Bookigs/Users/{id}")]
         public async Task<GetBookingDto[]> GetUserBookings([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             var result = await mediator.Send(new GetUserBookingsQuery { ApplicationUserId = id }, cancellationToken);
@@ -33,7 +33,7 @@ namespace Booking.Api.Controllers
         /// <summary>
         /// Get bookig by id 
         /// </summary>
-        [HttpGet("/Booking/{id}")]
+        [HttpGet("/Bookings/{id}")]
         public async Task<GetBookingDto> GetBooking([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetBookingQuery { ReservationId = id }, cancellationToken);
@@ -50,7 +50,7 @@ namespace Booking.Api.Controllers
         /// <summary>
         /// Create booking
         /// </summary>
-        [HttpPost("/Booking")]
+        [HttpPost("/Bookings")]
         public async Task<GetBookingDto> CreateBooking([FromBody] CreateBookingCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command , cancellationToken);
@@ -59,7 +59,7 @@ namespace Booking.Api.Controllers
         /// <summary>
         /// Delete booking by id
         /// </summary>
-        [HttpDelete("/Booking/{id}")]
+        [HttpDelete("/Bookings/{id}")]
         public Task DeleteBooking([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteBookingCommand { Id = id }, cancellationToken);
@@ -68,7 +68,7 @@ namespace Booking.Api.Controllers
         /// <summary>
         /// Update booking by id
         /// </summary>
-        [HttpPut("/Booking/{id}")]
+        [HttpPut("/Bookings/{id}")]
         public async Task<GetBookingDto> UpdateBooking([FromRoute] string id, [FromBody] UpdateBookingPayload payload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateBookingCommand

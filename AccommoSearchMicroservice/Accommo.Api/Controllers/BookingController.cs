@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Accommo.Api.Controllers
 {
     /// <summary>
-    /// BookingController
+    /// BookingsController
     /// </summary>
     [Authorize]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Create booking
         /// </summary>
-        [HttpPost("/Booking")]
+        [HttpPost("/Bookings")]
         public async Task<GetBookingDto> CreateBooking([FromBody] CreateBookingCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -28,7 +28,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Delete booking by id
         /// </summary>
-        [HttpDelete("/Booking/{id}")]
+        [HttpDelete("/Bookings/{id}")]
         public Task DeleteBooking([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteBookingCommand { Id = id }, cancellationToken);
@@ -37,7 +37,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Update booking by id
         /// </summary>
-        [HttpPut("/Booking/{id}")]
+        [HttpPut("/Bookings/{id}")]
         public async Task<GetBookingDto> UpdateBooking([FromRoute] string id, [FromBody] UpdateBookingPayload payload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateBookingCommand

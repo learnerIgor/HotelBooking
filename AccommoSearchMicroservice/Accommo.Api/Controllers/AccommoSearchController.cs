@@ -30,7 +30,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Get hotel by id
         /// </summary>
-        [HttpGet("/Hotel/{id}")]
+        [HttpGet("/Hotels/{id}")]
         public async Task<GetHotelDto> GetHotel([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetHotelQuery { Id = id }, cancellationToken);
@@ -39,7 +39,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Get room by id
         /// </summary>
-        [HttpGet("/Room/{id}")]
+        [HttpGet("/Rooms/{id}")]
         public async Task<GetRoomDto> GetRoom([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetRoomQuery { Id = id }, cancellationToken);

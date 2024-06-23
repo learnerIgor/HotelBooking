@@ -21,7 +21,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Get hotel by id
         /// </summary>
-        [HttpGet("/Hotel/{id}")]
+        [HttpGet("/Hotels/{id}")]
         public async Task<GetHotelDto> GetHotel([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetHotelQuery { Id = id }, cancellationToken);
@@ -41,7 +41,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Create hotel
         /// </summary>
-        [HttpPost("/Hotel")]
+        [HttpPost("/Hotels")]
         public async Task<GetHotelDto> CreateHotel([FromBody] CreateHotelCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -50,7 +50,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update hotel by id
         /// </summary>
-        [HttpPut("/Hotel/{id}")]
+        [HttpPut("/Hotels/{id}")]
         public async Task<GetHotelDto> UpdateHotel([FromRoute] string id, [FromBody] UpdateHotelPayload payload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateHotelCommand
@@ -68,7 +68,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Delete hotel by id
         /// </summary>
-        [HttpDelete("/Hotel/{id}")]
+        [HttpDelete("/Hotels/{id}")]
         public Task DeleteHotel([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteHotelCommand { Id = id }, cancellationToken);

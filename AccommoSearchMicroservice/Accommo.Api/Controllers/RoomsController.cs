@@ -20,7 +20,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Create room
         /// </summary>
-        [HttpPost("/Room")]
+        [HttpPost("/Rooms")]
         public async Task<GetRoomExternalDto> CreateRoom([FromBody] CreateRoomCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -30,7 +30,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Update room by id
         /// </summary>
-        [HttpPut("/Room/{id}")]
+        [HttpPut("/Rooms/{id}")]
         public async Task<GetRoomExternalDto> UpdateRoom([FromRoute] string id, [FromBody] UpdateRoomPayload roomPayload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             var comm = new UpdateRoomCommand(id, roomPayload);
@@ -40,7 +40,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Delete room by id
         /// </summary>
-        [HttpDelete("/Room/{id}")]
+        [HttpDelete("/Rooms/{id}")]
         public Task DeleteRoom([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteRoomCommand { Id = id }, cancellationToken);
@@ -50,7 +50,7 @@ namespace Accommo.Api.Controllers
         /// Get room by id
         /// </summary>
         [AllowAnonymous]
-        [HttpGet("/RoomBook/{id}")]
+        [HttpGet("/RoomsBook/{id}")]
         public async Task<GetRoomBookDto> GetRoomBook([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetRoomByIdQuery { Id = id }, cancellationToken);

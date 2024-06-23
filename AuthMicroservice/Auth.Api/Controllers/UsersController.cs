@@ -21,7 +21,7 @@ namespace Auth.Api.Controllers
         /// Get current user
         /// </summary>
         [Authorize]
-        [HttpGet("/CurrentUser")]
+        [HttpGet("/CurrentUsers")]
         public async Task<GetUserDto> GetCurrentUser(IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetCurrentUserQuery(), cancellationToken);
@@ -31,7 +31,7 @@ namespace Auth.Api.Controllers
         /// Delete user by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpDelete("/DeleteUser/{id}")]
+        [HttpDelete("/DeleteUsers/{id}")]
         public Task DeleteUser([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteUserCommand { Id = id }, cancellationToken);
@@ -41,7 +41,7 @@ namespace Auth.Api.Controllers
         /// Update user by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpPut("/UpdateUser/{id}")]
+        [HttpPut("/UpdateUsers/{id}")]
         public async Task<UserCommandDto> PutUser([FromServices] IMediator mediator, [FromRoute] string id, [FromBody] UpdateUserPayload payload, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateUserCommand
@@ -55,7 +55,7 @@ namespace Auth.Api.Controllers
         /// Update user password by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpPatch("/UpdatePassword/{id}")]
+        [HttpPatch("/UpdatePasswords/{id}")]
         public Task PatchUserPassword([FromServices] IMediator mediator, [FromRoute] string id, [FromBody] UpdateUserPasswordPayload payload, CancellationToken cancellationToken)
         {
             var command = new UpdateUserPasswordCommand()

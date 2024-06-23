@@ -22,7 +22,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Get type of room by id
         /// </summary>
-        [HttpGet("/RoomType/{id}")]
+        [HttpGet("/RoomTypes/{id}")]
         public async Task<GetRoomTypeDto> GetRoomType([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetRoomTypeQuery { Id = id }, cancellationToken);
@@ -42,7 +42,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Create room type
         /// </summary>
-        [HttpPost("/RoomType")]
+        [HttpPost("/RoomTypes")]
         public async Task<GetRoomTypeDto> CreateRoomType([FromBody] CreateRoomTypeCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -51,7 +51,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update room type by id
         /// </summary>
-        [HttpPut("/RoomType/{id}")]
+        [HttpPut("/RoomTypes/{id}")]
         public async Task<GetRoomTypeDto> UpdateRoomType([FromRoute] string id, [FromBody] UpdateRoomTypePayload payload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateRoomTypeCommand
@@ -64,7 +64,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Delete room type by id
         /// </summary>
-        [HttpDelete("/RoomType/{id}")]
+        [HttpDelete("/RoomTypes/{id}")]
         public Task DeleteRoomType([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteRoomTypeCommand { Id = id }, cancellationToken);
@@ -73,7 +73,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update cost of room type by id
         /// </summary>
-        [HttpPatch("/RoomType/{id}/Cost")]
+        [HttpPatch("/RoomTypes/{id}/Cost")]
         public async Task<GetRoomTypeDto> UpdateRoomTypeCost([FromRoute] string id, [FromBody] UpdateRoomTypeCostPayload payload, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateRoomTypeCostCommand { Id = id, BaseCost = payload.BaseCost }, cancellationToken);

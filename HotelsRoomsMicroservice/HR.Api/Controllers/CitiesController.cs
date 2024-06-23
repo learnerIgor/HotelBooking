@@ -21,7 +21,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Get city by name
         /// </summary>
-        [HttpGet("/City/{id}")]
+        [HttpGet("/Cities/{id}")]
         public async Task<GetCityDto> GetCity([FromRoute] string id, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetCityQuery { Id = id }, cancellationToken);
@@ -41,7 +41,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Create city
         /// </summary>
-        [HttpPost("/City")]
+        [HttpPost("/Cities")]
         public async Task<GetCityDto> CreateCity([AsParameters] string countryName, [FromBody] CreateCityCommandPayLoad command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new CreateCityCommand { CountryName = countryName, Name = command.Name }, cancellationToken);
@@ -51,7 +51,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update city by id
         /// </summary>
-        [HttpPatch("/City/{id}")]
+        [HttpPatch("/Cities/{id}")]
         public async Task<GetCityDto> UpdateCity([FromRoute] string id, [FromBody] UpdateCityCommandPayLoad payLoad, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             var comm = new UpdateCityCommand { Id = id, Name = payLoad.Name };
@@ -61,7 +61,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Delete city by id
         /// </summary>
-        [HttpDelete("/City/{id}")]
+        [HttpDelete("/Cities/{id}")]
         public Task DeleteCity([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteCityCommand { Id = id }, cancellationToken);

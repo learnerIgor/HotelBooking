@@ -16,7 +16,7 @@ namespace Auth.Api.Controllers
         /// <summary>
         /// Create jwt token
         /// </summary>
-        [HttpPost("/CreateJwtToken")]
+        [HttpPost("/CreateJwtTokens")]
         public async Task<JwtTokenDto> CreateJwtToken([FromBody] CreateJwtTokenCommand createJwtTokenCommand, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(createJwtTokenCommand, cancellationToken);
@@ -25,7 +25,7 @@ namespace Auth.Api.Controllers
         /// <summary>
         /// Create jwt token by refresh token
         /// </summary>
-        [HttpPost("/CreateJwtTokenByRefreshToken")]
+        [HttpPost("/CreateJwtTokensByRefreshTokens")]
         public async Task<JwtTokenDto> RefreshJwtToken([FromBody] CreateJwtTokenByRefreshTokenCommand createJwtTokenByRefreshToken, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(createJwtTokenByRefreshToken, cancellationToken);

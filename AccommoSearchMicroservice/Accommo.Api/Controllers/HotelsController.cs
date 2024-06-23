@@ -2,7 +2,6 @@ using Accommo.Application.Handlers.External.Hotels;
 using Accommo.Application.Handlers.External.Hotels.CreateHotel;
 using Accommo.Application.Handlers.External.Hotels.DeleteHotel;
 using Accommo.Application.Handlers.External.Hotels.UpdateHotel;
-using Accommo.Application.Handlers.External.Rooms;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +19,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Create hotel
         /// </summary>
-        [HttpPost("/Hotel")]
+        [HttpPost("/Hotels")]
         public async Task<GetHotelExternalDto> CreateHotel([FromBody] CreateHotelCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -29,7 +28,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Update hotel by id
         /// </summary>
-        [HttpPut("/Hotel/{id}")]
+        [HttpPut("/Hotels/{id}")]
         public async Task<GetHotelExternalDto> UpdateHotel([FromRoute] string id, [FromBody] UpdateHotelPayload payload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateHotelCommand
@@ -47,7 +46,7 @@ namespace Accommo.Api.Controllers
         /// <summary>
         /// Delete hotel by id
         /// </summary>
-        [HttpDelete("/Hotel/{id}")]
+        [HttpDelete("/Hotels/{id}")]
         public Task DeleteHotel([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteHotelCommand { Id = id }, cancellationToken);

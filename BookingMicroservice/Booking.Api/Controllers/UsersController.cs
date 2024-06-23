@@ -19,7 +19,7 @@ namespace Booking.Api.Controllers
         /// Add user by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpPost("/User")]
+        [HttpPost("/Users")]
         public async Task<GetUserDto> AddUser([FromBody] CreateUserCommand command, IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -29,7 +29,7 @@ namespace Booking.Api.Controllers
         /// Delete user by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpDelete("/DeleteUser/{id}")]
+        [HttpDelete("/DeleteUsers/{id}")]
         public Task DeleteUser([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteUserCommand{ Id = id }, cancellationToken);
@@ -39,7 +39,7 @@ namespace Booking.Api.Controllers
         /// Update user by Mq
         /// </summary>
         [AllowAnonymous]
-        [HttpPut("/UpdateUser/{id}")]
+        [HttpPut("/UpdateUsers/{id}")]
         public async Task<GetUserDto> PutUser([FromServices] IMediator mediator, [FromRoute] string id, [FromBody] UpdateUserPayload payload, CancellationToken cancellationToken)
         {
             return await mediator.Send(new UpdateUserCommand

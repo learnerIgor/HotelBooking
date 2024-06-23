@@ -21,7 +21,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Get room by id
         /// </summary>
-        [HttpGet("/Room/{id}")]
+        [HttpGet("/Rooms/{id}")]
         public async Task<GetRoomDto> GetRoom([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(new GetRoomQuery { Id = id }, cancellationToken);
@@ -41,7 +41,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Create room
         /// </summary>
-        [HttpPost("/Room")]
+        [HttpPost("/Rooms")]
         public async Task<GetRoomDto> CreateRoom([FromBody] CreateRoomCommand command, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
@@ -51,7 +51,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Update room by id
         /// </summary>
-        [HttpPut("/Room/{id}")]
+        [HttpPut("/Rooms/{id}")]
         public async Task<GetRoomDto> UpdateRoom([FromRoute] string id, [FromBody] UpdateRoomPayload roomPayload, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             var comm = new UpdateRoomCommand(id, roomPayload);
@@ -61,7 +61,7 @@ namespace HR.Api.Controllers
         /// <summary>
         /// Delete room by id
         /// </summary>
-        [HttpDelete("/Room/{id}")]
+        [HttpDelete("/Rooms/{id}")]
         public Task DeleteRoom([FromRoute] string id, [FromServices] IMediator mediator, CancellationToken cancellationToken)
         {
             return mediator.Send(new DeleteRoomCommand { Id = id }, cancellationToken);
