@@ -8,7 +8,7 @@ namespace HR.DistributedCache
     {
         private readonly IDistributedCache _distributedCache;
         private readonly RedisService _redisServer;
-        private string itemName => typeof(TItem).FullName;
+        private string itemName => Extensions.GetFormattedName(typeof(TItem));
 
         public BaseCache(IDistributedCache distributedCache, RedisService redisServer)
         {

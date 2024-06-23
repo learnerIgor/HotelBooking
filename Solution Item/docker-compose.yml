@@ -37,6 +37,10 @@ services:
     build:
       context: ..
       dockerfile: UsersMicroservice/Users.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
     ports:
       - "8081:8080"
 
@@ -46,6 +50,11 @@ services:
     build:
       context: ..
       dockerfile: AuthMicroservice/Auth.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - users.api
     ports:
       - "8082:8080"
 
@@ -76,6 +85,11 @@ services:
     build:
       context: ..
       dockerfile: AccommoSearchMicroservice/Accommo.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - auth.api
     ports:
       - "8083:8080"
 
@@ -85,6 +99,14 @@ services:
     build:
       context: ..
       dockerfile: BookingMicroservice/Booking.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - auth.api
+      - accommo.api
+      - users.api
+      - mail.api
     ports:
       - "8084:8080"
 
@@ -101,6 +123,11 @@ services:
     build:
       context: ..
       dockerfile: HotelsRoomsMicroservice/HR.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
+      - auth.api
     ports:
       - "8085:8080"
 
@@ -110,6 +137,10 @@ services:
     build:
       context: ..
       dockerfile: MailMicroservice/Mail.Api/Dockerfile
+    depends_on:
+      - mssql
+      - redis
+      - rabbitmq
     ports:
       - "8086:8080"
 
