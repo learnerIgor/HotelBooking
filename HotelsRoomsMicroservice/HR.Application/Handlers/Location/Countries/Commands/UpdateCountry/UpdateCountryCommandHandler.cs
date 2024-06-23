@@ -41,7 +41,7 @@ namespace HR.Application.Handlers.Location.Countries.Commands.UpdateCountry
             var country = await _country.AsAsyncRead().SingleOrDefaultAsync(c => c.CountryId == idGuid && c.IsActive, cancellationToken);
             if (country == null)
             {
-                throw new BadOperationException($"Country with id {request.Id} doesn't exists.");
+                throw new NotFoundException($"Country with id {request.Id} doesn't exists.");
             }
 
             var isCountryExist = await _country.AsAsyncRead().AnyAsync(c => c.Name == request.Name && c.IsActive, cancellationToken);

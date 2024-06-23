@@ -37,7 +37,7 @@ namespace Accommo.Application.Handlers.External.RoomTypes.CreateRoomType
             var roomType = new RoomType(request.RoomTypeId, request.Name, request.BaseCost, true);
 
             roomType = await _roomType.AddAsync(roomType, cancellationToken);
-            _logger.LogInformation($"New type of room {roomType.RoomTypeId} created in AccommoMicroservice.");
+            _logger.LogInformation($"New type of room {request.RoomTypeId} created in AccommoMicroservice.");
             _cleanAccommoCacheService.ClearListCaches();
 
             return _mapper.Map<GetRoomTypeExternalDto>(roomType);

@@ -35,7 +35,7 @@ namespace Accommo.Application.Handlers.External.RoomTypes.DeleteRoomType
             roomType.UpdateIsActive(false);
 
             await _roomType.UpdateAsync(roomType, cancellationToken);
-            _logger.LogWarning($"Type of room {roomType.RoomTypeId} deleted in AccommoMicroservice.");
+            _logger.LogWarning($"Type of room {request.Id} deleted in AccommoMicroservice.");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return default;

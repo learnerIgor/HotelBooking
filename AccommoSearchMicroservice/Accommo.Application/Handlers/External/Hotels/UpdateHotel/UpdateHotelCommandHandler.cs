@@ -69,7 +69,7 @@ namespace Accommo.Application.Handlers.External.Hotels.UpdateHotel
             hotel.UpdateImage(request.Image);
 
             var result = await _hotel.UpdateAsync(hotel, cancellationToken);
-            _logger.LogInformation($"Hotel {result.HotelId} updated");
+            _logger.LogInformation($"Hotel {request.Id} updated");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetHotelExternalDto>(result);

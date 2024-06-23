@@ -37,7 +37,7 @@ namespace Accommo.Application.Handlers.External.Locations.Cities.CreateCity
             var country = await _country.AsAsyncRead().SingleOrDefaultAsync(c => c.Name == request.CountryName, cancellationToken);
             if (country == null)
             {
-                throw new BadOperationException($"Country with name {request.CountryName} doesn't exists in AccommoMicroservice.");
+                throw new NotFoundException($"Country with name {request.CountryName} doesn't exists in AccommoMicroservice.");
             }
 
             var city = await _city.AsAsyncRead().SingleOrDefaultAsync(c => c.Name == request.CityName, cancellationToken);

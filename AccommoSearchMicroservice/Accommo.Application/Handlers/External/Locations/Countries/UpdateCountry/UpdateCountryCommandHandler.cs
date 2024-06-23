@@ -6,7 +6,6 @@ using Accommo.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Accommo.Application.Handlers.External.Hotels;
-using Accommo.Application.Handlers.External.Rooms;
 
 namespace Accommo.Application.Handlers.External.Locations.Countries.UpdateCountry
 {
@@ -35,7 +34,7 @@ namespace Accommo.Application.Handlers.External.Locations.Countries.UpdateCountr
             var country = await _country.AsAsyncRead().SingleOrDefaultAsync(c => c.CountryId == idGuid, cancellationToken);
             if (country == null)
             {
-                throw new BadOperationException($"Country with id {request.Id} doesn't exists.");
+                throw new NotFoundException($"Country with id {request.Id} doesn't exists.");
             }
 
             var isCountryExist = await _country.AsAsyncRead().AnyAsync(c => c.Name == request.Name, cancellationToken);
@@ -47,7 +46,7 @@ namespace Accommo.Application.Handlers.External.Locations.Countries.UpdateCountr
             country.UpdateName(request.Name);
 
             country = await _country.UpdateAsync(country, cancellationToken);
-            _logger.LogInformation($"Country {country.CountryId} updated.");
+            _logger.LogInformation($"Country {request.Id} updated.");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetCountryExternalDto>(country);

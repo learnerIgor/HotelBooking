@@ -51,7 +51,7 @@ namespace Accommo.Application.Handlers.External.Bookings.Commands.CreateBooking
             var entityReservation = new Reservation(idReservationGuid, startDate, endDate, request.IsActive, idRoomGuid);
 
             var reservation = await _reservation.AddAsync(entityReservation, cancellationToken);
-            _logger.LogInformation($"New reservation {reservation.ReservationId} created.");
+            _logger.LogInformation($"New reservation {request.ReservationId} created.");
             _cleanAccommoCacheService.ClearListCaches();
 
             return _mapper.Map<GetBookingDto>(reservation);

@@ -48,14 +48,14 @@ namespace HR.Application.Handlers.Rooms.Commands.CreateRoom
             var hotel = await _hotel.AsAsyncRead().SingleOrDefaultAsync(n => n.HotelId == idHotelGuid && n.IsActive, cancellationToken);
             if (hotel == null)
             {
-                throw new BadOperationException($"There is no hotel called {request.HotelId}.");
+                throw new NotFoundException($"There is no hotel called {request.HotelId}.");
             }
 
             var idRoomTypeGuid = Guid.Parse(request.RoomTypeId);
             var roomType = await _roomType.AsAsyncRead().SingleOrDefaultAsync(n => n.RoomTypeId == idRoomTypeGuid && n.IsActive, cancellationToken);
             if (roomType == null)
             {
-                throw new BadOperationException($"There is no type of number called {request.RoomTypeId}.");
+                throw new NotFoundException($"There is no type of number called {request.RoomTypeId}.");
             }
 
             var isRoomExist = await _room.AsAsyncRead().AnyAsync(e => e.Number == request.Number

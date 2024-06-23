@@ -5,7 +5,6 @@ using Accommo.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Accommo.Application.Handlers.External.Hotels;
-using Accommo.Application.Handlers.External.Rooms;
 
 namespace Accommo.Application.Handlers.External.Locations.Countries.CreateCountry
 {

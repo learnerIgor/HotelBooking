@@ -38,7 +38,7 @@ namespace Accommo.Application.Handlers.External.RoomTypes.UpdateRoomType
             roomType.UpdateName(request.Name);
 
             var result = await _roomType.UpdateAsync(roomType, cancellationToken);
-            _logger.LogInformation($"Type of room {result.RoomTypeId} updated in AccommoMicroservice.");
+            _logger.LogInformation($"Type of room {request.Id} updated in AccommoMicroservice.");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetRoomTypeExternalDto>(result);

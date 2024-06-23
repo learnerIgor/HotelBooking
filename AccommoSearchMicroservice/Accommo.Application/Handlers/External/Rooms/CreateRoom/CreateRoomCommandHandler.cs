@@ -39,14 +39,14 @@ namespace Accommo.Application.Handlers.External.Rooms.CreateRoom
             var hotel = await _hotel.AsAsyncRead().SingleOrDefaultAsync(n => n.HotelId == idHotelGuid && n.IsActive, cancellationToken);
             if (hotel == null)
             {
-                throw new BadOperationException($"There is no hotel called {request.HotelId} in AccommoMicroservice.");
+                throw new NotFoundException($"There is no hotel called {request.HotelId} in AccommoMicroservice.");
             }
 
             var idRoomTypeGuid = Guid.Parse(request.RoomTypeId);
             var roomType = await _roomType.AsAsyncRead().SingleOrDefaultAsync(n => n.RoomTypeId == idRoomTypeGuid && n.IsActive, cancellationToken);
             if (roomType == null)
             {
-                throw new BadOperationException($"There is no type of number called {request.RoomTypeId} in AccommoMicroservice.");
+                throw new NotFoundException($"There is no type of number called {request.RoomTypeId} in AccommoMicroservice.");
             }
 
             var isRoomExist = await _room.AsAsyncRead().AnyAsync(e => e.Number == request.Number
@@ -63,7 +63,7 @@ namespace Accommo.Application.Handlers.External.Rooms.CreateRoom
 
             var room = new Room(request.RoomId, request.Floor, request.Number, roomType.RoomTypeId, true, hotel.HotelId, request.Amenities, request.Image);
             room = await _room.AddAsync(room, cancellationToken);
-            _logger.LogInformation($"New room {room.RoomId} created in AccommoMicroservice.");
+            _logger.LogInformation($"New room {request.RoomId} created in AccommoMicroservice.");
             _cleanAccommoCacheService.ClearListCaches();
 
             return _mapper.Map<GetRoomExternalDto>(room);

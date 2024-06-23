@@ -23,7 +23,7 @@ namespace HR.ExternalProviders
         public async Task AddCountryAsync(string token, Country country, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var postCountryApiMethodUrl = $"{accommoServiceUrl}/Country";
+            var postCountryApiMethodUrl = $"{accommoServiceUrl}/Countries";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postCountryApiMethodUrl);
             GetCountry requestBody = new GetCountry
@@ -51,7 +51,7 @@ namespace HR.ExternalProviders
         public async Task DeleteCountryAsync(string token, Guid countryId, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var deleteCountryApiMethodUrl = $"{accommoServiceUrl}/Country/{countryId}";
+            var deleteCountryApiMethodUrl = $"{accommoServiceUrl}/Countries/{countryId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, deleteCountryApiMethodUrl);
             var responseMessage = await _httpClient.SendAsync(httpRequest, cancellationToken);
@@ -71,7 +71,7 @@ namespace HR.ExternalProviders
         public async Task UpdateCountryAsync(string token, string countryId, Country country, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putCountryApiMethodUrl = $"{accommoServiceUrl}/Country/{countryId}";
+            var putCountryApiMethodUrl = $"{accommoServiceUrl}/Countries/{countryId}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, putCountryApiMethodUrl);
             GetCountry requestBody = new GetCountry
             {

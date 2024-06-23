@@ -33,7 +33,7 @@ namespace Accommo.Application.Handlers.External.Rooms.DeleteRoom
             }
             room.UpdateIsActive(false);
             await _room.UpdateAsync(room, cancellationToken);
-            _logger.LogWarning($"Room {room.RoomId} deleted in AccommoMicroservice");
+            _logger.LogWarning($"Room {request.Id} deleted in AccommoMicroservice");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return default;

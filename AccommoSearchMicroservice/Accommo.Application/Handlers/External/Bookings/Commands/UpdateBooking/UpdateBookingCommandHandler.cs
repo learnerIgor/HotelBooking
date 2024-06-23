@@ -47,7 +47,7 @@ namespace Accommo.Application.Handlers.External.Bookings.Commands.UpdateBooking
             reservation.UpdateCheckOutDate(endDate);
 
             var result = await _reservation.UpdateAsync(reservation, cancellationToken);
-            _logger.LogInformation($"Reservation {result.ReservationId} updated");
+            _logger.LogInformation($"Reservation {request.ReservationId} updated");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetBookingDto>(result);

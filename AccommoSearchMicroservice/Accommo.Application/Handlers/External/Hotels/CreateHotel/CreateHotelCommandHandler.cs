@@ -55,7 +55,7 @@ namespace Accommo.Application.Handlers.External.Hotels.CreateHotel
             var hotel = new Hotel(request.HotelId, request.Name, request.AddressId, request.Description,  request.Rating, true, request.Image);
 
             hotel = await _hotel.AddAsync(hotel, cancellationToken);
-            _logger.LogInformation($"New hotel {hotel.HotelId} created.");
+            _logger.LogInformation($"New hotel {request.HotelId} created.");
             _cleanaccommoCacheService.ClearListCaches();
 
             return _mapper.Map<GetHotelExternalDto>(hotel);

@@ -6,7 +6,6 @@ using Accommo.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Accommo.Application.Handlers.External.Hotels;
-using Accommo.Application.Handlers.External.Rooms;
 
 namespace Accommo.Application.Handlers.External.Locations.Cities.UpdateCity
 {
@@ -35,7 +34,7 @@ namespace Accommo.Application.Handlers.External.Locations.Cities.UpdateCity
             var city = await _city.AsAsyncRead().SingleOrDefaultAsync(c => c.CityId == idGuid, cancellationToken);
             if (city == null)
             {
-                throw new BadOperationException($"City with id {request.Id} doesn't exists.");
+                throw new NotFoundException($"City with id {request.Id} doesn't exists.");
             }
 
             var isCityExist = await _city.AsAsyncRead().AnyAsync(c => c.Name == request.Name, cancellationToken);
@@ -47,7 +46,7 @@ namespace Accommo.Application.Handlers.External.Locations.Cities.UpdateCity
             city.UpdateName(request.Name);
 
             city = await _city.UpdateAsync(city, cancellationToken);
-            _logger.LogInformation($"City {city.CityId} updated.");
+            _logger.LogInformation($"City {request.Id} updated.");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetCityExternalDto>(city);

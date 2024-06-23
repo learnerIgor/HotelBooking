@@ -43,7 +43,7 @@ namespace HR.Application.Handlers.Location.Cities.Commands.CreateCity
             var country = await _country.AsAsyncRead().SingleOrDefaultAsync(c => c.Name == request.CountryName && c.IsActive, cancellationToken);
             if (country == null)
             {
-                throw new BadOperationException($"Country with name {request.CountryName} doesn't exists.");
+                throw new NotFoundException($"Country with name {request.CountryName} doesn't exists.");
             }
 
             var city = await _city.AsAsyncRead().SingleOrDefaultAsync(c => c.Name == request.Name, cancellationToken);

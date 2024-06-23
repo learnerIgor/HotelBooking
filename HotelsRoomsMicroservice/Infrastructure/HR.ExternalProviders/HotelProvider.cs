@@ -24,7 +24,7 @@ namespace HR.ExternalProviders
         public async Task AddHotelAsync(string token, Hotel hotel, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var postHotelApiMethodUrl = $"{accommoServiceUrl}/Hotel";
+            var postHotelApiMethodUrl = $"{accommoServiceUrl}/Hotels";
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postHotelApiMethodUrl);
             GetHotel requestBody = new GetHotel
             {
@@ -77,7 +77,7 @@ namespace HR.ExternalProviders
         public async Task UpdateHotelAsync(string token, string hotelId, Hotel hotel, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putHotelApiMethodUrl = $"{accommoServiceUrl}/Hotel/{hotelId}";
+            var putHotelApiMethodUrl = $"{accommoServiceUrl}/Hotels/{hotelId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, putHotelApiMethodUrl);
             GetHotel requestBody = new GetHotel
@@ -130,7 +130,7 @@ namespace HR.ExternalProviders
         public async Task DeleteHotelAsync(string token, Guid hotelId, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var deleteHotelApiMethodUrl = $"{accommoServiceUrl}/Hotel/{hotelId}";
+            var deleteHotelApiMethodUrl = $"{accommoServiceUrl}/Hotels/{hotelId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, deleteHotelApiMethodUrl);
             var responseMessage = await _httpClient.SendAsync(httpRequest, cancellationToken);

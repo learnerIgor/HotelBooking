@@ -41,7 +41,7 @@ namespace HR.Application.Handlers.Location.Cities.Commands.UpdateCity
             var city = await _city.AsAsyncRead().SingleOrDefaultAsync(c => c.CityId == idGuid && c.IsActive, cancellationToken);
             if (city == null)
             {
-                throw new BadOperationException($"City with id {request.Id} doesn't exists.");
+                throw new NotFoundException($"City with id {request.Id} doesn't exists.");
             }
 
             var isCityExist = await _city.AsAsyncRead().AnyAsync(c => c.Name == request.Name && c.IsActive, cancellationToken);

@@ -21,7 +21,7 @@ namespace Booking.ExternalProviders
         public async Task AddBookingAsync(string token, Reservation reservation, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var postReservationApiMethodUrl = $"{accommoServiceUrl}/Booking";
+            var postReservationApiMethodUrl = $"{accommoServiceUrl}/Bookings";
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postReservationApiMethodUrl);
             BookingDto booking = new()
             {
@@ -53,7 +53,7 @@ namespace Booking.ExternalProviders
         public async Task DeleteBookingAsync(string token, Guid reservationId, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var deleteBookingApiMethodUrl = $"{accommoServiceUrl}/Booking/{reservationId}";
+            var deleteBookingApiMethodUrl = $"{accommoServiceUrl}/Bookings/{reservationId}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, deleteBookingApiMethodUrl);
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var responseMessage = await _httpClient.SendAsync(httpRequest, cancellationToken);
@@ -73,7 +73,7 @@ namespace Booking.ExternalProviders
         public async Task UpdateBookingAsync(string token, string reservationId, Reservation reservation, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putBookingApiMethodUrl = $"{accommoServiceUrl}/Booking/{reservationId}";
+            var putBookingApiMethodUrl = $"{accommoServiceUrl}/Bookings/{reservationId}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, putBookingApiMethodUrl);
             BookingDto requestBody = new BookingDto
             {

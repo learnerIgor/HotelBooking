@@ -23,7 +23,7 @@ namespace HR.ExternalProviders
         public async Task AddCityAsync(string token, string countryName, City city, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var postCityApiMethodUrl = $"{accommoServiceUrl}/City?countryName={countryName}";
+            var postCityApiMethodUrl = $"{accommoServiceUrl}/Cities?countryName={countryName}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postCityApiMethodUrl);
             GetCity requestBody = new GetCity
             {
@@ -50,7 +50,7 @@ namespace HR.ExternalProviders
         public async Task DeleteCityAsync(string token, Guid cityId, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var deleteCityApiMethodUrl = $"{accommoServiceUrl}/City/{cityId}";
+            var deleteCityApiMethodUrl = $"{accommoServiceUrl}/Cities/{cityId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, deleteCityApiMethodUrl);
             var responseMessage = await _httpClient.SendAsync(httpRequest, cancellationToken);
@@ -70,7 +70,7 @@ namespace HR.ExternalProviders
         public async Task UpdateCityAsync(string token, string cityId, City city, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putCityApiMethodUrl = $"{accommoServiceUrl}/City/{cityId}";
+            var putCityApiMethodUrl = $"{accommoServiceUrl}/Cities/{cityId}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, putCityApiMethodUrl);
             GetCity requestBody = new GetCity
             {

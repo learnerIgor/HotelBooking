@@ -65,7 +65,6 @@ namespace Accommo.Application.Handlers.External.Rooms.UpdateRoom
             }
 
             var idGuid = Guid.Parse(request.Id);
-
             var amenityRoom = await _amenityRoom.AsAsyncRead().ToArrayAsync(r => r.RoomId == idGuid, cancellationToken);
             await _amenityRoom.RemoveRangeAsync(amenityRoom!, cancellationToken);
 
@@ -82,7 +81,7 @@ namespace Accommo.Application.Handlers.External.Rooms.UpdateRoom
             room.UpdateAmenities(request.Amenities);
 
             room = await _room.UpdateAsync(room, cancellationToken);
-            _logger.LogInformation($"Updated room {room.RoomId} in AccommoMicroservice");
+            _logger.LogInformation($"Updated room {request.Id} in AccommoMicroservice");
             _cleanAccommoCacheService.ClearAllCaches();
 
             return _mapper.Map<GetRoomExternalDto>(room);
