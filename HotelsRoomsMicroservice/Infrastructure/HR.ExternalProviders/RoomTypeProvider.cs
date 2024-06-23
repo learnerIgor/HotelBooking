@@ -23,7 +23,7 @@ namespace HR.ExternalProviders
         public async Task AddRoomTypeAsync(string token, RoomType roomType, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var postRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomType";
+            var postRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomTypes";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, postRoomTypeApiMethodUrl);
             GetRoomType requestBody = new GetRoomType
@@ -53,7 +53,7 @@ namespace HR.ExternalProviders
         public async Task DeleteRoomTypeAsync(string token, Guid roomTypeId, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var deleteRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomType/{roomTypeId}";
+            var deleteRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomTypes/{roomTypeId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, deleteRoomTypeApiMethodUrl);
             var responseMessage = await _httpClient.SendAsync(httpRequest, cancellationToken);
@@ -73,7 +73,7 @@ namespace HR.ExternalProviders
         public async Task UpdateCostRoomTypeAsync(string token, string roomTypeId, RoomType roomType, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomType/{roomTypeId}/Cost";
+            var putRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomTypes/{roomTypeId}/Cost";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, putRoomTypeApiMethodUrl);
             GetRoomType requestBody = new GetRoomType
@@ -99,7 +99,7 @@ namespace HR.ExternalProviders
         public async Task UpdateRoomTypeAsync(string token, string roomTypeId, RoomType roomType, CancellationToken cancellationToken)
         {
             var accommoServiceUrl = _configuration["AccommoServiceApiUrl"];
-            var putRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomType/{roomTypeId}";
+            var putRoomTypeApiMethodUrl = $"{accommoServiceUrl}/RoomTypes/{roomTypeId}";
             _httpClient.DefaultRequestHeaders.Add("Authorization", token);
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, putRoomTypeApiMethodUrl);
             GetRoomType requestBody = new GetRoomType

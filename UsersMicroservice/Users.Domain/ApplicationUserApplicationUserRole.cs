@@ -2,11 +2,11 @@
 {
     public class ApplicationUserApplicationUserRole
     {
-        public Guid ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; } = default!;
+        public Guid ApplicationUserId { get; private set; }
+        public ApplicationUser ApplicationUser { get; private set; } = default!;
 
-        public int ApplicationUserRoleId { get; set; }
-        public ApplicationUserRole Role { get; set; } = default!;
+        public int ApplicationUserRoleId { get; private set; }
+        public ApplicationUserRole Role { get; private set; } = default!;
 
         public ApplicationUserApplicationUserRole(int applicationUserRoleId) 
         {

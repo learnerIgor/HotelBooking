@@ -6,6 +6,7 @@ namespace Accommo.Application.Handlers.External.Locations.Countries.CreateCountr
     {
         public CreateCountryCommandValidator()
         {
+            RuleFor(n => n.CountryId).NotEmpty();
             RuleFor(n => n.Name).MaximumLength(50).NotEmpty();
         }
     }

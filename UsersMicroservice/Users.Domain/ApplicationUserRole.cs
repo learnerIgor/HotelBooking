@@ -2,8 +2,8 @@
 {
     public class ApplicationUserRole
     {
-        public int ApplicationUserRoleId { get; set; }
-        public string Name { get; set; } = default!;
-        public IEnumerable<ApplicationUserApplicationUserRole> Users { get; set; } = default!;
+        public int ApplicationUserRoleId { get; private set; }
+        public string Name { get; private set; } = default!;
+        public IEnumerable<ApplicationUserApplicationUserRole> Users { get; private set; } = default!;
     }
 }

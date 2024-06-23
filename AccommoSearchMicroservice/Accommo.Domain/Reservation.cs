@@ -2,12 +2,12 @@
 {
     public class Reservation
     {
-        public Guid ReservationId { get; set; }
-        public DateTime CheckInDate { get; set; }
-        public DateTime CheckOutDate { get; set; }
-        public bool IsActive { get; set; }
-        public Guid RoomId { get; set; } = default!;
-        public Room Room { get; set; } = default!;
+        public Guid ReservationId { get; private set; }
+        public DateTime CheckInDate { get; private set; }
+        public DateTime CheckOutDate { get; private set; }
+        public bool IsActive { get; private set; }
+        public Guid RoomId { get; private set; } = default!;
+        public Room Room { get; private set; } = default!;
 
         public Reservation(Guid reservationId, DateTime checkInDate, DateTime checkOutDate, bool isActive, Guid roomId)
         {

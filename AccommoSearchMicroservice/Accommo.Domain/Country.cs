@@ -2,11 +2,11 @@
 {
     public class Country
     {
-        public Guid CountryId { get; set; }
-        public string Name { get; set; } = default!;
+        public Guid CountryId { get; private set; }
+        public string Name { get; private set; } = default!;
         public bool IsActive { get; private set; }
 
-        public IEnumerable<City> Cities { get; set; } = default!;
+        public IEnumerable<City> Cities { get; private set; } = default!;
 
         private Country() { }
 

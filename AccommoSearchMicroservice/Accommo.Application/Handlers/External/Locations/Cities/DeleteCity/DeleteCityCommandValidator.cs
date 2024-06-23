@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Accommo.Application.ValidatorsExtensions;
+using FluentValidation;
 
 namespace Accommo.Application.Handlers.External.Locations.Cities.DeleteCity
 {
@@ -6,7 +7,7 @@ namespace Accommo.Application.Handlers.External.Locations.Cities.DeleteCity
     {
         public DeleteCityCommandValidator()
         {
-            RuleFor(e => e.Id).NotEmpty();
+            RuleFor(e => e.Id).NotEmpty().IsGuid();
         }
     }
 }

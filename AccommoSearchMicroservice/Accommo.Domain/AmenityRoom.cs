@@ -2,11 +2,11 @@
 {
     public class AmenityRoom
     {
-        public Guid RoomId { get; set; }
-        public Room Room { get; set; } = default!;
+        public Guid RoomId { get; private set; }
+        public Room Room { get; private set; } = default!;
 
-        public int AmenityId { get; set; }
-        public Amenity Amenity { get; set; } = default!;
+        public int AmenityId { get; private set; }
+        public Amenity Amenity { get; private set; } = default!;
 
         private AmenityRoom() { }
 

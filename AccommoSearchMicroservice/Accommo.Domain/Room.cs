@@ -2,21 +2,21 @@
 {
     public class Room
     {
-        public Guid RoomId { get; set; } = default!;
-        public int Floor { get; set; }
-        public int Number { get; set; }
-        public bool IsActive { get; set; }
+        public Guid RoomId { get; private set; } = default!;
+        public int Floor { get; private set; }
+        public int Number { get; private set; }
+        public bool IsActive { get; private set; }
         public string Image { get; private set; }
 
-        public Guid RoomTypeId {  get; set; }
-        public RoomType RoomType { get; set; } = default!;
+        public Guid RoomTypeId {  get; private set; }
+        public RoomType RoomType { get; private set; } = default!;
 
-        public Guid HotelId { get; set; }
-        public Hotel Hotel { get; set; } = default!;
+        public Guid HotelId { get; private set; }
+        public Hotel Hotel { get; private set; } = default!;
 
-        public IEnumerable<AmenityRoom> Amenities { get; set; } = default!;
+        public IEnumerable<AmenityRoom> Amenities { get; private set; } = default!;
 
-        public IEnumerable<Reservation> Reservations { get; set; } = default!;
+        public IEnumerable<Reservation> Reservations { get; private set; } = default!;
 
         private Room() { }
 

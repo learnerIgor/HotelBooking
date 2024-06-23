@@ -6,7 +6,7 @@ namespace Accommo.Application.Handlers.External.RoomTypes.UpdateRoomType
     {
         public UpdateRoomTypeCommandValidator()
         {
-            RuleFor(e => e.Name).MaximumLength(50).When(e => e.Name is not null);
+            RuleFor(e => e.Name).MaximumLength(50).NotEmpty();
         }
     }
 }

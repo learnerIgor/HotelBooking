@@ -2,14 +2,14 @@
 {
     public class ApplicationUser
     {
-        public Guid ApplicationUserId { get; set; } = default!;
-        public string Login { get; set; } = default!;
-        public string PasswordHash { get; set; } = default!;
-        public string Email { get; set; } = default!;
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? UpdatedDate { get; set; }
-        public IEnumerable<ApplicationUserApplicationUserRole> Roles { get; set; } =
+        public Guid ApplicationUserId { get; private set; } = default!;
+        public string Login { get; private set; } = default!;
+        public string PasswordHash { get; private set; } = default!;
+        public string Email { get; private set; } = default!;
+        public bool IsActive { get; private set; }
+        public DateTime CreatedDate { get; private set; }
+        public DateTime? UpdatedDate { get; private set; }
+        public IEnumerable<ApplicationUserApplicationUserRole> Roles { get; private set; } =
             new List<ApplicationUserApplicationUserRole>();
 
         public ApplicationUser(string login, string passwordHash, string email, DateTime createdDate, IEnumerable<ApplicationUserApplicationUserRole> roles, bool isActive)

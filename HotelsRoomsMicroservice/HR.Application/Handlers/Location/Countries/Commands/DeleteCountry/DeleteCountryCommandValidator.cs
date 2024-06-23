@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using HR.Application.ValidatorsExtensions;
 
 namespace HR.Application.Handlers.Location.Countries.Commands.DeleteCountry
 {
@@ -6,7 +7,7 @@ namespace HR.Application.Handlers.Location.Countries.Commands.DeleteCountry
     {
         public DeleteCountryCommandValidator()
         {
-            RuleFor(e => e.Id).NotEmpty();
+            RuleFor(e => e.Id).NotEmpty().IsGuid();
         }
     }
 }

@@ -5,8 +5,8 @@
         public Guid HotelId { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public int Rating { get; set; }
-        public bool IsActive { get; set; }
+        public int Rating { get; private set; }
+        public bool IsActive { get; private set; }
         public string IBAN { get; private set; }
         public string Image { get; private set; }
 

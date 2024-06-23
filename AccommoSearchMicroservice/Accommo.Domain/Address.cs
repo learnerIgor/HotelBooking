@@ -2,17 +2,17 @@
 {
     public class Address
     {
-        public Guid AddressId { get; set; }
-        public string Street { get; set; } = default!;
-        public string HouseNumber { get; set; } = default!;
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
-        public bool IsActive { get; set; }
+        public Guid AddressId { get; private set; }
+        public string Street { get; private set; } = default!;
+        public string HouseNumber { get; private set; } = default!;
+        public decimal Latitude { get; private set; }
+        public decimal Longitude { get; private set; }
+        public bool IsActive { get; private set; }
 
-        public Guid CityId { get; set; }
-        public City City { get; set; } = default!;
+        public Guid CityId { get; private set; }
+        public City City { get; private set; } = default!;
 
-        public Hotel Hotel { get; set; } = default!;
+        public Hotel Hotel { get; private set; } = default!;
 
         private Address() { }
 

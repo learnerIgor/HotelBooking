@@ -2,13 +2,13 @@
 {
     public class City
     {
-        public Guid CityId { get; set; }
-        public string Name { get; set; } = default!;
+        public Guid CityId { get; private set; }
+        public string Name { get; private set; } = default!;
         public bool IsActive { get; private set; }
 
-        public Guid CountryId { get; set; }
-        public Country Country { get; set; } = default!;
-        public IEnumerable<Address> Addresses { get; set; } = default!;
+        public Guid CountryId { get; private set; }
+        public Country Country { get; private set; } = default!;
+        public IEnumerable<Address> Addresses { get; private set; } = default!;
 
         private City() { }
 

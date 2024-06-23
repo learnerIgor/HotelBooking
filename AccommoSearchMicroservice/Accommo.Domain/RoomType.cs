@@ -2,12 +2,12 @@
 {
     public class RoomType
     {
-        public Guid RoomTypeId { get; set; }
-        public string Name { get; set; } = default!;
-        public decimal BaseCost { get; set; }
-        public bool IsActive { get; set; }
+        public Guid RoomTypeId { get; private set; }
+        public string Name { get; private set; } = default!;
+        public decimal BaseCost { get; private set; }
+        public bool IsActive { get; private set; }
 
-        public IEnumerable<Room> Rooms { get; set; } = new List<Room>();
+        public IEnumerable<Room> Rooms { get; private set; } = new List<Room>();
 
 
         public RoomType(Guid roomTypeId, string name, decimal baseCost, bool isActive)
