@@ -48,8 +48,8 @@ public class GetHotelsQueryHandlerTest
 
         var hotelDtos = new List<GetHotelDto>
         {
-            new() { HotelId = Guid.Parse("67490f16-6c1a-40dd-b7ee-3b83004001d1") },
-            new() { HotelId = Guid.Parse("67490f16-6c1a-40dd-b7ee-3b83004001d2") }
+            new() { HotelId = Guid.Parse("67490f16-6c1a-40dd-b7ee-3b83004001d1"), Name = "Test",Description="Description",Rating = 3, Address = new AddressDto{ Street = "Street", HouseNumber = "12", Latitude = -45.5M, Longitude = -44.5M, City = new CityDto { Name="Name", Country = new CountryDto{ Name="Name" } } } },
+            new() { HotelId = Guid.Parse("67490f16-6c1a-40dd-b7ee-3b83004001d2"), Name = "Test",Description="Description",Rating = 3, Address = new AddressDto{ Street = "Street", HouseNumber = "12", Latitude = -45.5M, Longitude = -44.5M, City = new CityDto { Name="Name", Country = new CountryDto{ Name="Name" } } } },
         };
 
         _hotelMock.Setup(r => r.AsQueryable())

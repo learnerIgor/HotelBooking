@@ -13,7 +13,7 @@
 
         public async Task SendMessage()
         {
-            var postUserApiMethodUrl = $"http://booking.api:8080/DeleteUser/{id}";
+            var postUserApiMethodUrl = $"http://booking.api:8080/DeleteUsers/{id}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, postUserApiMethodUrl);
             var responseMessage = await _httpClient.SendAsync(httpRequest);
             if (!responseMessage.IsSuccessStatusCode)

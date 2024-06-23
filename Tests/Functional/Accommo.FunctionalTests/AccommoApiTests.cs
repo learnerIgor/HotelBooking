@@ -17,7 +17,7 @@ namespace Accommo.FunctionalTests
         private readonly WebApplicationFactory<Program> _factory;
 
         private const string adminToken =
-            "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjM1ZjM3MzQwLWY5ZTUtNDExOC1iOTQ5LTA4ZGM1MWNjNTdiNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzE4Nzg1MDUwLCJpc3MiOiJIb3RlbEJvb2siLCJhdWQiOiJIb3RlbEJvb2sifQ.z9n1cFVdWdM_lSlX-vhZdkYT62oXIU2Lm92es__cKzo";
+            "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjM1ZjM3MzQwLWY5ZTUtNDExOC1iOTQ5LTA4ZGM1MWNjNTdiNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiZXhwIjoxNzE5MDA0Nzc0LCJpc3MiOiJIb3RlbEJvb2siLCJhdWQiOiJIb3RlbEJvb2sifQ.D1-wDT_08wHLt9Sm8prVkCbrfp99zaNG7nyLJEjAGnQ";
         public AccommoApiTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
@@ -38,7 +38,7 @@ namespace Accommo.FunctionalTests
 
             // Act
             using (var requestMessage =
-                   new HttpRequestMessage(HttpMethod.Get, $"/Hotel/{query.Id}"))
+                   new HttpRequestMessage(HttpMethod.Get, $"/Hotels/{query.Id}"))
             {
                 var response = await client.SendAsync(requestMessage);
 

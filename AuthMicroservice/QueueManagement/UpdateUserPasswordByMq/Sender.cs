@@ -17,7 +17,7 @@ namespace UpdateUserPasswordByMq
 
         public async Task SendMessage()
         {
-            var putUserApiMethodUrl = $"http://auth.api:8080/UpdatePassword/{Id}";
+            var putUserApiMethodUrl = $"http://auth.api:8080/UpdatePasswords/{Id}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, putUserApiMethodUrl);
             httpRequest.Content = new StringContent(json, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.SendAsync(httpRequest);

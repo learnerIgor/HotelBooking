@@ -17,7 +17,7 @@ namespace UpdateUserByMq
 
         public async Task SendMessage()
         {
-            var putUserApiMethodUrl = $"http://booking.api:8080/UpdateUser/{Id}";
+            var putUserApiMethodUrl = $"http://booking.api:8080/UpdateUsers/{Id}";
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, putUserApiMethodUrl);
             httpRequest.Content = new StringContent(json, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.SendAsync(httpRequest);
