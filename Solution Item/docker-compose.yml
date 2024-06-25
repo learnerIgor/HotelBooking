@@ -59,27 +59,6 @@ services:
       - "8082:8080"
 
 
-  deleteuserbymq:
-    image: ${DOCKER_REGISTRY-}deleteuserbymq
-    build:
-      context: ..
-      dockerfile: AuthMicroservice/QueueManagement/DeleteUserByMq/Dockerfile
-
-
-  updateuserbymq:
-    image: ${DOCKER_REGISTRY-}updateuserbymq
-    build:
-      context: ..
-      dockerfile: AuthMicroservice/QueueManagement/UpdateUserByMq/Dockerfile
-
-
-  updateuserpasswordbymq:
-    image: ${DOCKER_REGISTRY-}updateuserpasswordbymq
-    build:
-      context: ..
-      dockerfile: AuthMicroservice/QueueManagement/UpdateUserPasswordByMq/Dockerfile
-
-
   accommo.api:
     image: ${DOCKER_REGISTRY-}accommoapi
     build:
@@ -109,13 +88,6 @@ services:
       - mail.api
     ports:
       - "8084:8080"
-
-
-  adduserbymq:
-    image: ${DOCKER_REGISTRY-}adduserbymq
-    build:
-      context: ..
-      dockerfile: BookingMicroservice/QueueManagement/AddUserByMq/Dockerfile
 
 
   hr.api:
@@ -150,4 +122,46 @@ services:
     build:
       context: ..
       dockerfile: MailMicroservice/QueueManagement/SendEmailByMq/Dockerfile
+
+
+  updateuserbookingbymq:
+    image: ${DOCKER_REGISTRY-}updateuserbookingbymq
+    build:
+      context: ..
+      dockerfile: BookingMicroservice/QueueManagement/UpdateUserByMq/Dockerfile
+
+
+  deleteuserbookingbymq:
+    image: ${DOCKER_REGISTRY-}deleteuserbookingbymq
+    build:
+      context: ..
+      dockerfile: BookingMicroservice/QueueManagement/DeleteUserByMq/Dockerfile
+
+
+  adduserbookingbymq:
+    image: ${DOCKER_REGISTRY-}adduserbookingbymq
+    build:
+      context: ..
+      dockerfile: BookingMicroservice/QueueManagement/AddUserByMq/Dockerfile
+
+
+  updateuserauthbymq:
+    image: ${DOCKER_REGISTRY-}updateuserauthbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/UpdateUserByMq/Dockerfile
+
+
+  updateuserpasswordauthbymq:
+    image: ${DOCKER_REGISTRY-}updateuserpasswordauthbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/UpdateUserPasswordByMq/Dockerfile
+
+
+  deleteuserauthbymq:
+    image: ${DOCKER_REGISTRY-}deleteuserauthbymq
+    build:
+      context: ..
+      dockerfile: AuthMicroservice/QueueManagement/DeleteUserByMq/Dockerfile
 

@@ -29,7 +29,7 @@ namespace Core.Tests
                 });
             });
         
-            builder.UseEnvironment("Development");
+            builder.UseEnvironment("Test");
         }
     }
 }

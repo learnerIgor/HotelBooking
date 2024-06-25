@@ -56,7 +56,7 @@ namespace Users.Persistence.Migrations
                 columns: new[] { "ApplicationUserId", "Login", "PasswordHash", "Email", "IsActive", "CreatedDate" },
                 values: new object[,]
                 {
-                    { "35f37340-f9e5-4118-b949-08dc51cc57b7", "Admin", "$MYHASH$V1$10000$+X4Aw24Ud2+zdOsZVfe7S8tvhB2v4gKHMSrUFhWWVO8yZoSv", "email@mail.com", true, DateTime.UtcNow }
+                    { "35f37340-f9e5-4118-b949-08dc51cc57b7", "Admin", "$MYHASH$V1$10000$+X4Aw24Ud2+zdOsZVfe7S8tvhB2v4gKHMSrUFhWWVO8yZoSv", "igorekmu.levckovets@gmail.com", true, DateTime.UtcNow }
                 });
 
             migrationBuilder.CreateTable(

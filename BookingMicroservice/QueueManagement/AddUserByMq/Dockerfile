@@ -7,18 +7,17 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["BookingMicroservice/QueueManagement/AddUserByMq/AddUserByMq.csproj", "BookingMicroservice/QueueManagement/AddUserByMq/"]
-COPY ["BookingMicroservice/QueueManagement/DeleteUserByMq/DeleteUserByMq.csproj", "BookingMicroservice/QueueManagement/DeleteUserByMq/"]
-RUN dotnet restore "./BookingMicroservice/QueueManagement/AddUserByMq/AddUserByMq.csproj"
+COPY ["BookingMicroservice/QueueManagement/AddUserByMq/AddUserBookingByMq.csproj", "BookingMicroservice/QueueManagement/AddUserByMq/"]
+RUN dotnet restore "./BookingMicroservice/QueueManagement/AddUserByMq/AddUserBookingByMq.csproj"
 COPY . .
 WORKDIR "/src/BookingMicroservice/QueueManagement/AddUserByMq"
-RUN dotnet build "./AddUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./AddUserBookingByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./AddUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./AddUserBookingByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AddUserByMq.dll"]
+ENTRYPOINT ["dotnet", "AddUserBookingByMq.dll"]

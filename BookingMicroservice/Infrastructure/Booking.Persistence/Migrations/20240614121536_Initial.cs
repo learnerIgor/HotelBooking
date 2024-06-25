@@ -30,7 +30,7 @@ namespace Booking.Persistence.Migrations
                 columns: new[] { "ApplicationUserId", "Login", "IsActive", "Email" },
                 values: new object[,]
                 {
-                    { "35f37340-f9e5-4118-b949-08dc51cc57b7", "Admin", true, "email@mail.com" }
+                    { "35f37340-f9e5-4118-b949-08dc51cc57b7", "Admin", true, "igorekmu.levckovets@gmail.com" }
                 });
 
             migrationBuilder.CreateTable(

@@ -15,7 +15,7 @@ var factory = new ConnectionFactory
     UserName = "guest",
     Password = "guest",
 };
-Thread.Sleep(30000);
+
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
 
@@ -40,7 +40,7 @@ consumer.Received += async (model, ea) =>
     var body = ea.Body.ToArray();
     var userJson = Encoding.UTF8.GetString(body);
     var user = JsonSerializer.Deserialize<string>(userJson);
-    Sender sender = new(httpClientFactory, user);
+    Sender sender = new(httpClientFactory!, user!);
     await sender.SendMessage();
     Console.WriteLine($" [x] Received {userJson}");
 };

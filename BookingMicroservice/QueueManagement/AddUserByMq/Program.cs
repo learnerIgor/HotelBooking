@@ -14,7 +14,7 @@ var factory = new ConnectionFactory
     UserName = "guest",
     Password = "guest",
 };
-Thread.Sleep(30000);
+
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
 

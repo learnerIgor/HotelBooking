@@ -7,17 +7,17 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["BookingMicroservice/QueueManagement/DeleteUserByMq/DeleteUserByMq.csproj", "BookingMicroservice/QueueManagement/DeleteUserByMq/"]
-RUN dotnet restore "./BookingMicroservice/QueueManagement/DeleteUserByMq/DeleteUserByMq.csproj"
+COPY ["BookingMicroservice/QueueManagement/DeleteUserByMq/DeleteUserBookingByMq.csproj", "BookingMicroservice/QueueManagement/DeleteUserByMq/"]
+RUN dotnet restore "./BookingMicroservice/QueueManagement/DeleteUserByMq/DeleteUserBookingByMq.csproj"
 COPY . .
 WORKDIR "/src/BookingMicroservice/QueueManagement/DeleteUserByMq"
-RUN dotnet build "./DeleteUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./DeleteUserBookingByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./DeleteUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./DeleteUserBookingByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DeleteUserByMq.dll"]
+ENTRYPOINT ["dotnet", "DeleteUserBookingByMq.dll"]

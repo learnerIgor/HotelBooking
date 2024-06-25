@@ -83,7 +83,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users.Exchanger", "UsersMic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueueManagement", "QueueManagement", "{5AA40983-0AB4-4CDC-B9A6-4D62A976EA90}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddUserByMq", "BookingMicroservice\QueueManagement\AddUserByMq\AddUserByMq.csproj", "{0E058940-537B-44AD-92EA-A9231AE88D34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddUserBookingByMq", "BookingMicroservice\QueueManagement\AddUserByMq\AddUserBookingByMq.csproj", "{0E058940-537B-44AD-92EA-A9231AE88D34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MailMicroservice", "MailMicroservice", "{A8B8D781-D21D-4F58-B443-DB8E4AED6D5D}"
 EndProject
@@ -103,17 +103,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueueManagement", "QueueMan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendEmailByMq", "MailMicroservice\QueueManagement\SendEmailByMq\SendEmailByMq.csproj", "{6C2C6AC6-C93D-4B25-A8AD-B5B8F4E56E09}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteUserByMq", "BookingMicroservice\QueueManagement\DeleteUserByMq\DeleteUserByMq.csproj", "{6317062B-F140-4F83-9B5A-754636D9C096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteUserBookingByMq", "BookingMicroservice\QueueManagement\DeleteUserByMq\DeleteUserBookingByMq.csproj", "{6317062B-F140-4F83-9B5A-754636D9C096}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserByMq", "BookingMicroservice\QueueManagement\UpdateUserByMq\UpdateUserByMq.csproj", "{68E92004-5905-4F4D-9F4A-364C816B03B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserBookingByMq", "BookingMicroservice\QueueManagement\UpdateUserByMq\UpdateUserBookingByMq.csproj", "{68E92004-5905-4F4D-9F4A-364C816B03B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueueManagement", "QueueManagement", "{D82A4D40-C691-45A3-A512-D1CA840F4444}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteUserByMq", "AuthMicroservice\QueueManagement\DeleteUserByMq\DeleteUserByMq.csproj", "{A9A9121A-DC49-401B-B31C-DF63FACBB2FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeleteUserAuthByMq", "AuthMicroservice\QueueManagement\DeleteUserByMq\DeleteUserAuthByMq.csproj", "{A9A9121A-DC49-401B-B31C-DF63FACBB2FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserByMq", "AuthMicroservice\QueueManagement\UpdateUserByMq\UpdateUserByMq.csproj", "{6F0FB33C-C8C9-49BC-8EFF-962C52C05D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserAuthByMq", "AuthMicroservice\QueueManagement\UpdateUserByMq\UpdateUserAuthByMq.csproj", "{6F0FB33C-C8C9-49BC-8EFF-962C52C05D54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserPasswordByMq", "AuthMicroservice\QueueManagement\UpdateUserPasswordByMq\UpdateUserPasswordByMq.csproj", "{65D18DE6-483F-4A01-BBFF-4F641A0E4EB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpdateUserPasswordAuthByMq", "AuthMicroservice\QueueManagement\UpdateUserPasswordByMq\UpdateUserPasswordAuthByMq.csproj", "{65D18DE6-483F-4A01-BBFF-4F641A0E4EB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B361F529-D995-44C8-82D2-61F15E7AA22A}"
 EndProject
@@ -125,9 +125,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "Tests\Core.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{23828A3E-637D-4849-BEF5-AA9212E019CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accommo.FunctionalTests", "Tests\Functional\Accommo.FunctionalTests\Accommo.FunctionalTests.csproj", "{0B2E503C-A17A-4303-8C56-F46B67BAB01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accommo.FunctionalTests", "Tests\Functional\Accommo.FunctionalTests\Accommo.FunctionalTests.csproj", "{0B2E503C-A17A-4303-8C56-F46B67BAB01F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accommo.UnitTests", "Tests\Unit\Accommo.UnitTests\Accommo.UnitTests.csproj", "{331FC824-2610-4F54-90A3-535006D775C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accommo.UnitTests", "Tests\Unit\Accommo.UnitTests\Accommo.UnitTests.csproj", "{331FC824-2610-4F54-90A3-535006D775C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

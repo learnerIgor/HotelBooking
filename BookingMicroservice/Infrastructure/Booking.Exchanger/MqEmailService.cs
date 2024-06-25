@@ -21,6 +21,7 @@ namespace Booking.Exchanger
                 UserName = "guest",
                 Password = "guest",
             };
+
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 

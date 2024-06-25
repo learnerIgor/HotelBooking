@@ -7,17 +7,17 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthMicroservice/QueueManagement/DeleteUserByMq/DeleteUserByMq.csproj", "AuthMicroservice/QueueManagement/DeleteUserByMq/"]
-RUN dotnet restore "./AuthMicroservice/QueueManagement/DeleteUserByMq/DeleteUserByMq.csproj"
+COPY ["AuthMicroservice/QueueManagement/DeleteUserByMq/DeleteUserAuthByMq.csproj", "AuthMicroservice/QueueManagement/DeleteUserByMq/"]
+RUN dotnet restore "./AuthMicroservice/QueueManagement/DeleteUserByMq/DeleteUserAuthByMq.csproj"
 COPY . .
 WORKDIR "/src/AuthMicroservice/QueueManagement/DeleteUserByMq"
-RUN dotnet build "./DeleteUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./DeleteUserAuthByMq.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./DeleteUserByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./DeleteUserAuthByMq.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "DeleteUserByMq.dll"]
+ENTRYPOINT ["dotnet", "DeleteUserAuthByMq.dll"]
