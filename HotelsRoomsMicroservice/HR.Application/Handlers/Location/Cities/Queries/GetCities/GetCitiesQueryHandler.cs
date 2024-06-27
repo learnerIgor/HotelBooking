@@ -20,7 +20,7 @@ namespace HR.Application.Handlers.Location.Cities.Queries.GetCities
 
         public override async Task<BaseListDto<GetCityDto>> SentQueryAsync(GetCitiesQuery request, CancellationToken cancellationToken)
         {
-            var query = _cities.AsQueryable();
+            var query = _cities.AsQueryable().Where(c => c.IsActive);
 
             if(!string.IsNullOrWhiteSpace(request.FreeText))
             {

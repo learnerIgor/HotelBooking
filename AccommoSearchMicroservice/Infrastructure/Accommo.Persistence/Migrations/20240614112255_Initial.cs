@@ -103,9 +103,9 @@ namespace Accommo.Persistence.Migrations
                 columns: new[] { "RoomTypeId", "Name", "BaseCost", "IsActive" },
                 values: new object[,]
                 {
-                    { "8c6d84dc-01ef-4451-89cb-d8af4af7be2c", "Стандартный", 1000.5m, true},
-                    { "24255a44-d32f-47bf-8deb-4ac3e69adf3a", "Улучшенный", 2000.5m, true},
-                    { "ca7083ba-52f1-4c83-bcbd-8232ebb139ab", "Люкс", 3000.5m, true},
+                    { "8c6d84dc-01ef-4451-89cb-d8af4af7be2c", "Standart", 1000.5m, true},
+                    { "24255a44-d32f-47bf-8deb-4ac3e69adf3a", "Improved", 2000.5m, true},
+                    { "ca7083ba-52f1-4c83-bcbd-8232ebb139ab", "Lux", 3000.5m, true},
                 });
 
             migrationBuilder.CreateTable(

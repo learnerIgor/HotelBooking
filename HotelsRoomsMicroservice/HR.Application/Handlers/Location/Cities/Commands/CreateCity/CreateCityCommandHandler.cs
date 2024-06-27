@@ -47,6 +47,10 @@ namespace HR.Application.Handlers.Location.Cities.Commands.CreateCity
             }
 
             var city = await _city.AsAsyncRead().SingleOrDefaultAsync(c => c.Name == request.Name, cancellationToken);
+            if(city != null && city.Name == request.Name && city.IsActive)
+            {
+                throw new BadOperationException($"City with name {request.Name} exists.");
+            }
             if (city != null && !city.IsActive)
             {
                 city.UpdateIsActive(true);

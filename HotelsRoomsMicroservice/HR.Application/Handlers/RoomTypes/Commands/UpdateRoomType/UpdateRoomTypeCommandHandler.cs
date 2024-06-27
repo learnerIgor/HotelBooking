@@ -31,6 +31,7 @@ namespace HR.Application.Handlers.RoomTypes.Commands.UpdateRoomType
             _mapper = mapper;
             _logger = logger;
             _cleanHotelRoomCacheService = cleanHotelRoomCacheService;
+            _currentUserService = currentUserService;
             _roomTypeProvider = roomTypeProvider;
         }
         public async Task<GetRoomTypeDto> Handle(UpdateRoomTypeCommand request, CancellationToken cancellationToken)

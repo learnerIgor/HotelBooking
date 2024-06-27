@@ -20,7 +20,7 @@ namespace HR.Application.Handlers.Location.Countries.Queries.GetCountries
 
         public override async Task<BaseListDto<GetCountryDto>> SentQueryAsync(GetCountriesQuery request, CancellationToken cancellationToken)
         {
-            var query = _countries.AsQueryable();
+            var query = _countries.AsQueryable().Where(c => c.IsActive);
 
             if (!string.IsNullOrWhiteSpace(request.FreeText))
             {

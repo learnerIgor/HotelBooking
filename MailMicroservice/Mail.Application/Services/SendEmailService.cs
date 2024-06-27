@@ -23,8 +23,8 @@ namespace Mail.Application.Services
             emailMessage.Subject = _configuration["MailSettings:Subject"];
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Plain)
             {
-                Text = $"\"Dear {login},\r\n\r\nWe are pleased to confirm that you have successfully booked a room at \"{hotel}\" for your upcoming stay. Your reservation details are as follows:\r\n\r\nCheck-in Date: {checkIn[..10]}\r\n" +
-                $"Check-out Date: {checkOut[..10]}\r\nRoom Type: {roomType}\r\n\r\nPlease keep this information handy for any future reference.\r\n\r\nWe look forward to welcoming you to our " +
+                Text = $"\"Dear {login},\r\n\r\nWe are pleased to confirm that you have successfully booked a room at \"{hotel}\" for your upcoming stay. Your reservation details are as follows:\r\n\r\nCheck-in date: {checkIn[..10]}\r\n" +
+                $"Check-out date: {checkOut[..10]}\r\nRoom Type: {roomType}\r\n\r\nPlease keep this information handy for any future reference.\r\n\r\nWe look forward to welcoming you to our " +
                 $"hotel and ensuring you have a wonderful stay.\r\n\r\nBest regards,\r\nHotelBooking Team\""
             };
 
